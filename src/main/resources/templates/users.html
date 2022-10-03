@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>List Users</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css"  />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+#troopstable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#troopstable  td, #troopstable  th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#troopstable  tr:nth-child(even){background-color: #f2f2f2;}
+
+#troopstable  tr:hover {background-color: #ddd;}
+
+#troopstable  th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+<div>
+<ul>
+	<li style="float:right"><a class="active" th:href="logout">Logout</a> </li>
+	<li style="float:right"><a class="active" th:href="register">New User Registration</a> </li>
+	<li style="float:right"><a class="active" th:href="menu">Home</a> </li>
+</ul>
+	<div class="container text-center">
+		<div><center>
+
+				<p>
+			<h2>Welcome <span> [[${#request.userPrincipal.principal.fullName}]] </span> &nbsp; [[${#request.userPrincipal.principal.authorities}]]</h2>
+				</p>
+		</center></div>
+
+		</div>
+		<div><center>
+			<img th:src="@{/images/logo.png}" width=" 900" height="100" alt="TroopTracker">
+			<h1>Registered Users</h1>
+
+
+			<table id="troopstable">
+				<thead class="thead-dark">
+					<tr>
+						<th>User ID</th>
+						<th>E-mail</th>
+						<th>Rank</th>
+						<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user: ${listUsers}">
+						<td th:text="${user.id}">User ID</td>
+						<td th:text="${user.email}">E-mail</td>
+						<td th:text="${user.grade}">Rank</td>
+						<td th:text="${user.lastName}">Last Name</td>
+					</tr>
+				</tbody>
+			</table>
+		</center></div>
+	</div>
+</body>
+
+</html>
