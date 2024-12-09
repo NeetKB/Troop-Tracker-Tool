@@ -16,3 +16,8 @@ The user is able to issue a command to view the data, reverse the displayed orde
 ## 🔧 Prerequisites
 
 Ensure you have Java (version 11) and MySQL installed
+
+## Setup
+
+   1. Compile and run the Java application.
+   2. Access the application by navigating to http://localhost:8080 in your web browser.
